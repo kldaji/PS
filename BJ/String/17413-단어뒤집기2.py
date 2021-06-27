@@ -10,6 +10,33 @@ S = stdin.readline().rstrip()
 <SIMPLE VERSION>
 """
 
+isTag = False
+word = ""
+answer = ""
+
+for s in S:
+    if not isTag:
+        if s == "<":
+            answer += word
+            word = s
+            isTag = True
+        elif s == " ":
+            word += s
+            answer += word
+            word = ""
+        else:
+            word = s + word
+    else:
+        if s == ">":
+            word += s
+            answer += word
+            word = ""
+            isTag = False
+        else:
+            word += s
+
+answer += word
+print(answer)
 
 
 """
