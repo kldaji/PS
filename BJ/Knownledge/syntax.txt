@@ -1,0 +1,2 @@
+1. list를 parameter로 보낼 때, list 변수명을 그대로 보내면 copy-to-reference가 되기 때문에
+copy-to-value만 원한다면 (변수명)[:]의 형태로 인자값을 넣어주어야 한다.
