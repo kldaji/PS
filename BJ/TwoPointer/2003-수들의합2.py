@@ -1,10 +1,6 @@
 """
 <Two Pointer>
 """
-
-"""
-<INCORRECT>
-"""
 from sys import *
 
 # N (1 ~ 10,000)

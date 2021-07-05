@@ -2,11 +2,6 @@
 <Dijkstra>
 - 하나의 노드(기준점)에서 출발하여 다른 모든 노드까지의 최단 경로를 구하는 알고리즘.
 """
-
-"""
-<오답>
-"""
-
 from sys import *
 import heapq
 
@@ -25,9 +20,6 @@ graph = [[] for _ in range(V + 1)]
 # distance
 dist = [INF] * (V + 1)
 
-# weather a node visit or not
-visited = [False] * (V + 1)
-
 # E개의 간선
 for _ in range(E):
     # u -> v (w)
@@ -37,7 +29,6 @@ for _ in range(E):
     graph[u].append((w, v))
 
 # Setting for start node
-visited[K] = True
 dist[K] = 0
 
 # priority queue
@@ -51,10 +42,9 @@ while heap:
     # check connection
     for weight, node in graph[curr]:
         # update condition
-        if not visited[node] and dist[node] > (dist[curr] + weight):
+        if dist[node] > (dist[curr] + weight):
             dist[node] = dist[curr] + weight
-            visited[node] = True
-            heapq.heappush(heap, (weight, node))
+            heapq.heappush(heap, (dist[node], node))
 
 for i in range(1, V + 1):
     if dist[i] == INF:

@@ -1,13 +1,13 @@
+"""
+<Dynamic Programming>
+"""
 from sys import *
 
-"""
-<오답>
-"""
 # 자연수 N(1 ~ 1000000)
 N = int(stdin.readline().rstrip())
+
 """
 <Example>
-
 dp[1] = 1
 dp[2] = 2
 dp[3] = 3
@@ -16,20 +16,19 @@ dp[5] = 8
 dp[6] = 13
 """
 
-
-# 1th
+# N = 1
 first = 1
-# 2th
 second = 2
 
-# temporary storage
-temp = 1
-
-for i in range(N - 1):
+# N = 2 ~
+for i in range(2, N + 1):
     temp = first
     first = second
 
     # first + second
-    second = temp + second
+    second = (temp + second) % 15746
 
-print(first % 15746)
+print(first)
+
+# mod를 계산 중에 하는 것이 시간초과를 해결했다..
+# mod가 시간에도 영향을 끼치나..?
