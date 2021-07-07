@@ -1,35 +1,22 @@
 """
 <Greedy>
 """
-
-"""
-<Example>
-B -> BA -> ABB -> ABBA
-AB -> BAB (X)
-"""
-
-"""
-<INCORRECT>
-"""
 from sys import *
 
 S = stdin.readline().rstrip()
-T = stdin.readline().rstrip()
+T = list(stdin.readline().rstrip())
 
-i = 0
-while len(S) != len(T):
-    if i < len(S) and S[i] == T[i]:
-        i += 1
-        continue
+# Core thing is thinking backwards
 
+# backwards
+for i in range(len(T) - 1, len(S) - 1, -1):
     if T[i] == "A":
-        S += "A"
-    else:
-        S = S[::-1]
-        S += "B"
-    i += 1
+        T.pop()
+    elif T[i] == "B":
+        T.pop()
+        T = T[::-1]
 
-if S == T:
+if "".join(T) == S:
     print(1)
 else:
     print(0)
