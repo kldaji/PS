@@ -1,5 +1,6 @@
 """
 <Math>
+<Divide and Conquer>
 """
 from sys import *
 
