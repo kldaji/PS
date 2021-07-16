@@ -37,6 +37,9 @@ while heap:
     # current charge & node
     cc, curr = heapq.heappop(heap)
 
+    if charge[curr] < cc:
+        continue
+
     # next charge & node candidate
     for nc, next in graph[curr]:
         # total charge
